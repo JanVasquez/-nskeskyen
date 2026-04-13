@@ -1,4 +1,4 @@
 package org.example.oenskeskyen.Controller;
 
-public class Controller {
+public class WishController {
 }
