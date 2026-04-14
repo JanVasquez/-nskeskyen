@@ -64,4 +64,12 @@ public class Wish {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    public Wish (String title, String description, String link, String icon, int userId) {
+        this.title = title;
+        this.description = description;
+        this.link = link;
+        this.icon = icon;
+        this.userId = userId;
+    }
 }

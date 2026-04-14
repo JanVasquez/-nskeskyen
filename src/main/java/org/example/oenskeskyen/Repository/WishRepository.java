@@ -59,4 +59,21 @@ public class WishRepository {
 
         return wishes;
     }
+
+    public void deleteWish(int wishId) throws SQLException {
+        Connection database = new ConnectionManager().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = database.prepareStatement(
+                    "DELETE FROM wishes WHERE id = ?"
+            );
+
+            preparedStatement.setInt(1, wishId);
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Could not delete wish");
+        }
+    }
 }
