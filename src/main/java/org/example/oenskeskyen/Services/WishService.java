@@ -2,13 +2,19 @@ package org.example.oenskeskyen.Services;
 
 import org.example.oenskeskyen.Models.Wish;
 import org.example.oenskeskyen.Repository.WishRepository;
+import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
 
+@Service
 public class WishService {
 
-    private WishRepository wishRepository = new WishRepository();
+    private WishRepository wishRepository;
+
+    public WishService(WishRepository wishRepository) {
+        this.wishRepository = wishRepository;
+    }
 
     public void createWish(String title, String description, String link, String icon, int userid) {
         try {

@@ -12,7 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserController {
 
-    private UserService userService = new UserService();
+    private UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/register")
     public ModelAndView showRegisterPage() {
@@ -53,5 +57,10 @@ public class UserController {
     public ModelAndView logout(HttpSession session) {
         session.invalidate();
         return new ModelAndView("redirect:/login");
+    }
+
+    @GetMapping("/")
+    public ModelAndView index() {
+        return new ModelAndView("index");
     }
 }

@@ -12,7 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class WishController {
 
-    private WishService wishService = new WishService();
+    private WishService wishService;
+
+    public WishController(WishService wishService) {
+        this.wishService = wishService;
+    }
 
     @GetMapping("/wishlist")
     public ModelAndView showWishlist(HttpSession session) {

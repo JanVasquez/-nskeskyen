@@ -2,6 +2,7 @@ package org.example.oenskeskyen.Repository;
 
 import org.example.oenskeskyen.Models.Wish;
 import org.example.oenskeskyen.Utility.ConnectionManager;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class WishRepository {
 
     public void createWish(Wish wish) throws SQLException {

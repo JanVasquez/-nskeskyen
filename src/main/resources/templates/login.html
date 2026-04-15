@@ -7,15 +7,20 @@
 </head>
 <body>
 
-<div class="auth-container">
-    <h2>Login</h2>
+<h2>Login</h2>
 
-    <input id="username" placeholder="Brugernavn">
-    <input id="password" type="password" placeholder="Kodeord">
+<form method="post" action="/login">
+    <input name="username" placeholder="Brugernavn" required>
+    <input name="password" type="password" placeholder="Kodeord" required>
 
-    <button onclick="login()">Login</button>
-</div>
+    <button type="submit">Login</button>
+</form>
 
-<script src="/auth.js"></script>
+<p style="color:red;">
+    <span th:text="${error}"></span>
+</p>
+
+<a href="/register">Opret konto</a>
+
 </body>
 </html>

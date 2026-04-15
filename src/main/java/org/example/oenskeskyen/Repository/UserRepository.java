@@ -2,12 +2,14 @@ package org.example.oenskeskyen.Repository;
 
 import org.example.oenskeskyen.Models.User;
 import org.example.oenskeskyen.Utility.ConnectionManager;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Repository
 public class UserRepository  implements IUserRepository {
 
     public void createUser(User user) throws SQLException {

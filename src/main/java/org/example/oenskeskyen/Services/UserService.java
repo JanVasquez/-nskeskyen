@@ -2,12 +2,18 @@ package org.example.oenskeskyen.Services;
 
 import org.example.oenskeskyen.Models.User;
 import org.example.oenskeskyen.Repository.UserRepository;
+import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 
+@Service
 public class UserService {
 
-    private UserRepository userRepository = new UserRepository();
+    private UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public void registerUser(String username, String password) {
         try {

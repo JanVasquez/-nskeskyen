@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Min ønskeliste</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Min ønskeliste</h1>
+
+<a href="/add-wish">Tilføj ønske</a>
+<a href="/logout">Log ud</a>
+
+<hr>
+
+<div th:if="${wishes == null || #lists.isEmpty(wishes)}">
+    <p>Ingen ønsker endnu</p>
+</div>
+
+<div th:each="wish : ${wishes}" class="card">
+    <h3 th:text="${wish.title}"></h3>
+    <p th:text="${wish.description}"></p>
+
+    <a th:href="${wish.link}" target="_blank">Se link</a>
+
+    <br>
+
+    <a th:href="@{/delete-wish(id=${wish.id})}">
+        Slet
+    </a>
+</div>
+
+</body>
+</html>

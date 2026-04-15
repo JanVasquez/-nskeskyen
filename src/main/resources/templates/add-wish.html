@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Tilføj ønske</title>
+</head>
+<body>
+
+<h2>Tilføj ønske</h2>
+
+<form method="post" action="/add-wish">
+    <input name="title" placeholder="Titel" required>
+    <input name="description" placeholder="Beskrivelse">
+    <input name="link" placeholder="Link">
+    <input name="icon" placeholder="Icon (valgfri)">
+
+    <button type="submit">Gem</button>
+</form>
+
+<a href="/wishlist">Tilbage</a>
+
+</body>
+</html>

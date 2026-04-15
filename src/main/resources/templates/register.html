@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Opret konto</title>
-    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
-<div class="auth-container">
-    <h2>Opret konto</h2>
+<h2>Opret konto</h2>
 
-    <input id="username" placeholder="Brugernavn">
-    <input id="password" type="password" placeholder="Kodeord">
+<form method="post" action="/register">
+    <input name="username" placeholder="Brugernavn" required>
+    <input name="password" type="password" placeholder="Kodeord" required>
 
-    <button onclick="register()">Opret</button>
-</div>
+    <button type="submit">Opret</button>
+</form>
 
-<script src="/auth.js"></script>
+<a href="/login">Har du allerede en konto?</a>
+
 </body>
 </html>
