@@ -10,7 +10,7 @@
 <div class="container">
     <h2>Del din ønskeliste</h2>
 
-    <input th:value="@{/share/{id}(id=${user.id})}" readonly>
+    <input th:value="@{'/share/' + ${session.user.id}}" readonly>
 
     <p>Send linket til dine venner 🎉</p>
 </div>

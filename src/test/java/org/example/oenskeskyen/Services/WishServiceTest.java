@@ -47,6 +47,6 @@ class WishServiceTest {
     void deleteWish_callsRepository() throws SQLException {
         wishService.deleteWish(1, 1);
 
-        verify(mockRepo, times(1)).deleteWish(1);
+        verify(mockRepo, times(1)).deleteWish(1, 1);
     }
 }
