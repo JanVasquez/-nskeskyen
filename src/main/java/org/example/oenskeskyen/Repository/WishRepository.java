@@ -62,7 +62,7 @@ public class WishRepository {
         return wishes;
     }
 
-    public void deleteWish(int wishId) throws SQLException {
+    public void deleteWish(int wishId, int userId) throws SQLException {
         Connection database = new ConnectionManager().getConnection();
 
         try {

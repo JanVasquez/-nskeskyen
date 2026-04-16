@@ -5,6 +5,7 @@ import org.example.oenskeskyen.Models.User;
 import org.example.oenskeskyen.Services.WishService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -76,5 +77,15 @@ public class WishController {
         wishService.deleteWish(id, user.getId());
 
         return new ModelAndView("redirect:/wishlist");
+    }
+
+    @GetMapping("/share/{userId}")
+    public ModelAndView shareWishlist(@PathVariable int userId) {
+
+        ModelAndView mav = new ModelAndView("wishlist");
+
+        mav.addObject("wishes", wishService.getWishesUser(userId));
+
+        return mav;
     }
 }

@@ -40,7 +40,7 @@ public class WishService {
 
     public void deleteWish(int wishId, int userId) {
         try {
-            wishRepository.deleteWish(wishId);
+            wishRepository.deleteWish(wishId, userId);
 
         } catch (SQLException e) {
             e.printStackTrace();
