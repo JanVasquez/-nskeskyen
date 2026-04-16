@@ -67,10 +67,11 @@ public class WishRepository {
 
         try {
             PreparedStatement preparedStatement = database.prepareStatement(
-                    "DELETE FROM wishes WHERE id = ?"
+                    "DELETE FROM wishes WHERE id = ? AND user_id = ?"
             );
 
             preparedStatement.setInt(1, wishId);
+            preparedStatement.setInt(2, userId);
 
             preparedStatement.executeUpdate();
 
