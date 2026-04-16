@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Delte ønsker</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h2>🎁 Ønskeliste</h2>
+
+<div class="grid">
+    <div th:each="wish : ${wishes}" class="card">
+        <h3 th:text="${wish.title}"></h3>
+        <p th:text="${wish.description}"></p>
+
+        <a th:href="${wish.link}" target="_blank">Se link</a>
+    </div>
+</div>
+
+</body>
+</html>

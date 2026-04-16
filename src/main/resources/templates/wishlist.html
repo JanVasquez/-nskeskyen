@@ -5,6 +5,7 @@
     <title>Min ønskeliste</title>
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
 
 <nav class="navbar">
@@ -25,33 +26,75 @@
 
 </nav>
 
+<br><br><br>
 
-<br> <br> <br>
+<!-- ACTIONS -->
+<div th:if="${session.user != null}" style="display:flex; gap:10px; align-items:center;">
 
-<a href="/add-wish" class="btn">Tilføj ønske</a>
-<a href="/logout">Log ud</a>
+    <!-- SHARE BUTTON -->
+    <button id="shareBtn" type="button" class="btn" onclick="copyShareLink()">
+        🔗 Del ønskeliste
+    </button>
+
+    <a href="/add-wish" class="btn">➕ Tilføj ønske</a>
+    <a href="/logout">Log ud</a>
+</div>
 
 <hr>
 
+<!-- NOT LOGGED IN -->
+<div th:if="${session.user == null}">
+    <p>Du er ikke logget ind.</p>
+    <a href="/login">Login her</a>
+</div>
+
+<!-- EMPTY WISHLIST -->
 <div th:if="${wishes == null || #lists.isEmpty(wishes)}">
-    <p>Ingen ønsker endnu</p>
+    <p>Ingen ønsker endnu 🎁</p>
 </div>
 
-<div class ="grid">
-<div th:each="wish : ${wishes}" class="card">
-    <h3 th:text="${wish.title}"></h3>
-    <p th:text="${wish.description}"></p>
+<!-- WISH GRID -->
+<div class="grid">
 
-    <a th:href="${wish.link}" target="_blank">Se link</a>
+    <div th:each="wish : ${wishes}" class="card">
 
-    <br>
+        <h3 th:text="${wish.title}"></h3>
+        <p th:text="${wish.description}"></p>
 
-    <a th:href="@{/delete-wish(id=${wish.id})}">
-        Slet
-    </a>
+        <a th:if="${wish.link != null}"
+           th:href="${wish.link}"
+           target="_blank">
+            Se link
+        </a>
+
+        <br><br>
+
+        <a th:href="@{/delete-wish(id=${wish.id})}">
+            🗑 Slet
+        </a>
+
+    </div>
+
 </div>
-</div>
 
+<!-- SHARE SCRIPT -->
+<script th:inline="javascript">
+    function copyShareLink() {
+        const userId = [[${session.user.id}]];
+        const link = window.location.origin + "/share/" + userId;
+
+        navigator.clipboard.writeText(link).then(() => {
+            const btn = document.getElementById("shareBtn");
+
+            const original = btn.innerText;
+            btn.innerText = "✔ Kopieret!";
+
+            setTimeout(() => {
+                btn.innerText = original;
+            }, 1500);
+        });
+    }
+</script>
 
 </body>
 </html>

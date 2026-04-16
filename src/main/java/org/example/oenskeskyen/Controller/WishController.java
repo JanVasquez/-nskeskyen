@@ -20,15 +20,12 @@ public class WishController {
     }
 
     @GetMapping("/wishlist")
-    public ModelAndView showWishlist(HttpSession session) {
+    public ModelAndView wishlist(HttpSession session) {
 
         User user = (User) session.getAttribute("user");
 
-        if (user == null) {
-            return new ModelAndView("redirect:/login");
-        }
-
         ModelAndView mav = new ModelAndView("wishlist");
+        mav.addObject("user", user);
         mav.addObject("wishes", wishService.getWishesUser(user.getId()));
 
         return mav;
@@ -82,7 +79,7 @@ public class WishController {
     @GetMapping("/share/{userId}")
     public ModelAndView shareWishlist(@PathVariable int userId) {
 
-        ModelAndView mav = new ModelAndView("wishlist");
+        ModelAndView mav = new ModelAndView("public-wishlist");
 
         mav.addObject("wishes", wishService.getWishesUser(userId));
 
