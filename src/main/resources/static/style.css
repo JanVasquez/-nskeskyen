@@ -32,9 +32,19 @@ body {
 }
 
 .btn {
-    background: cornflowerblue;
-    padding: 8px 15px;
-    border-radius: 8px;
+    background: indianred;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: royalblue;
+    transform: scale(1.05);
 }
 
 /* HERO */
@@ -107,4 +117,13 @@ button {
 
 .reserved {
     opacity: 0.5;
+}
+
+.logo {
+    text-decoration: none;
+    color: white;
+}
+
+.logo h2 {
+    margin: 0;
 }
