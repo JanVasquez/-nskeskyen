@@ -63,4 +63,18 @@ public class UserController {
     public ModelAndView index() {
         return new ModelAndView("index");
     }
+
+    @GetMapping("/search")
+    public ModelAndView searchUser(@RequestParam("q") String username) {
+
+        User user = userService.getUserUsername(username);
+
+        if (user == null) {
+            ModelAndView mav = new ModelAndView("index");
+            mav.addObject("error", "Bruger ikke fundet");
+            return mav;
+        }
+
+        return new ModelAndView("redirect:/share/" + user.getId());
+    }
 }
