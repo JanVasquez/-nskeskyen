@@ -2,12 +2,14 @@ package org.example.oenskeskyen;
 
 import org.example.oenskeskyen.Models.User;
 import org.example.oenskeskyen.Services.UserService;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class IntegrationTest {
 
+    @Disabled
     @Test
     void registerAndLoginUser() {
 

@@ -17,6 +17,7 @@ public class WishRepository {
     public void createWish(Wish wish) throws SQLException {
         Connection database = new ConnectionManager().getConnection();
 
+
         try {
             PreparedStatement preparedStatement = database.prepareStatement(
                     "INSERT INTO wishes (title, description, link, icon, user_id) VALUES (?, ?, ?, ?, ?)"
